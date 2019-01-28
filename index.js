@@ -1,4 +1,9 @@
 const fetch = require("node-fetch");
+const express = require("express");
+
+const app = express();
+
+const port = 3003;
 
 const baseUrl = "http://data.nba.com/5s/json/cms/noseason/scoreboard";
 
@@ -12,10 +17,21 @@ const getGamesFrom = async (date) => {
 
   const games = json.sports_content.games.game;
 
-  return games.length;
+  return games;
 };
 
-(async function() {
-  const gamesOnDate = await getGamesFrom(date);
-  console.log(gamesOnDate);
-})();
+app.get("/:date?", async (req, res) => {
+  try {
+    const { date } = req.params;
+    if (!date) {
+      return res.status(404).send("You forgot the date pal");
+    }
+    const gamesOnDate = await getGamesFrom(date);
+    res.send(gamesOnDate);
+  } catch (e) {
+    console.error(e);
+    res.status(500).send("ooops error!");
+  }
+});
+
+app.listen(port, () => console.log(`express server listening on ${port}`));
