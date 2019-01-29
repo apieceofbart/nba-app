@@ -7,8 +7,6 @@ const port = 3003;
 
 const baseUrl = "http://data.nba.com/5s/json/cms/noseason/scoreboard";
 
-const date = process.argv[2];
-
 const getGamesFrom = async (date) => {
   const url = `${baseUrl}/${date}/games.json`;
 
@@ -19,6 +17,12 @@ const getGamesFrom = async (date) => {
 
   return games;
 };
+
+app.use((_, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.get("/:date?", async (req, res) => {
   try {
