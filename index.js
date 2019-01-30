@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
 const express = require("express");
+const utils = require("./utils");
 
 const app = express();
 
@@ -26,9 +27,9 @@ app.use((_, res, next) => {
 
 app.get("/:date?", async (req, res) => {
   try {
-    const { date } = req.params;
+    let { date } = req.params;
     if (!date) {
-      return res.status(404).send("You forgot the date pal");
+      date = utils.getTodaysDate();
     }
     const gamesOnDate = await getGamesFrom(date);
     res.send(gamesOnDate);
