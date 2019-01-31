@@ -40,3 +40,5 @@ app.get("/:date?", async (req, res) => {
 });
 
 app.listen(port, () => console.log(`express server listening on ${port}`));
+
+export default app;
