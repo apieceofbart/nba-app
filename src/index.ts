@@ -1,17 +1,17 @@
-const fetch = require("node-fetch");
-const express = require("express");
-const utils = require("./utils");
+import * as nodeFetch from "node-fetch";
+import * as express from "express";
+import { getTodaysDate } from "./utils";
 
-const app = express();
+const app: express.Application = express.default();
 
 const port = 3003;
 
 const baseUrl = "http://data.nba.com/5s/json/cms/noseason/scoreboard";
 
-const getGamesFrom = async (date) => {
+const getGamesFrom = async (date: string) => {
   const url = `${baseUrl}/${date}/games.json`;
 
-  const resp = await fetch(url);
+  const resp = await nodeFetch.default(url);
   const json = await resp.json();
 
   const games = json.sports_content.games.game;
@@ -29,7 +29,7 @@ app.get("/:date?", async (req, res) => {
   try {
     let { date } = req.params;
     if (!date) {
-      date = utils.getTodaysDate();
+      date = getTodaysDate();
     }
     const gamesOnDate = await getGamesFrom(date);
     res.send(gamesOnDate);

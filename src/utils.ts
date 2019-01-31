@@ -1,4 +1,4 @@
-function getTodaysDate() {
+export function getTodaysDate() {
   const now = new Date();
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, "0");
@@ -6,7 +6,3 @@ function getTodaysDate() {
 
   return `${year}${month}${day}`;
 }
-
-module.exports = {
-  getTodaysDate
-};
