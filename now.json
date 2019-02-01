@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "nba-app",
-  "builds": [{ "src": "src/index.ts", "use": "@now/node@canary" }],
+  "builds": [{ "src": "src/backend/index.ts", "use": "@now/node@canary" }],
   "routes": [{ "src": "/(.*)", "dest": "src/backend/index.ts" }],
   "alias": "nba-app.now.sh"
 }
