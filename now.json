@@ -6,8 +6,8 @@
     { "src": "src/frontend/index.html", "use": "@now/static" }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "src/backend/index.ts" },
-    { "src": "/.*", "dest": "src/frontend/index.html" }
+    { "src": "/api/(.*)", "dest": "/src/backend/index.ts" },
+    { "src": "/.*", "dest": "/src/frontend/index.html" }
   ],
   "alias": "nba-app.now.sh",
   "public": true
