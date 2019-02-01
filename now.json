@@ -7,7 +7,7 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "src/backend/index.ts" },
-    { "src": "/.*", "dest": "src/frontend.index.html" }
+    { "src": "/.*", "dest": "src/frontend/index.html" }
   ],
   "alias": "nba-app.now.sh"
 }
