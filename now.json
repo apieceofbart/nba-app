@@ -10,7 +10,7 @@
       "src": "src/frontend/package.json",
       "use": "@now/static-build",
       "config": {
-        "distDir": "src/frontend/dist"
+        "distDir": "dist"
       }
     }
   ],
