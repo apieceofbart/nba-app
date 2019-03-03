@@ -25,7 +25,7 @@ app.use((_, res, next) => {
   next();
 });
 
-app.get("/:date?", async (req, res) => {
+app.get("/api/:date?", async (req, res) => {
   try {
     let { date } = req.params;
     if (!date) {
