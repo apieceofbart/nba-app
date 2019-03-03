@@ -2,7 +2,7 @@
   "version": 2,
   "name": "nba-app",
   "builds": [
-    { "src": "src/backend/index.ts", "use": "@now/node" },
+    { "src": "src/backend/index.ts", "use": "@now/node@canary" },
     { "src": "src/frontend/index.html", "use": "@now/static" }
   ],
   "routes": [
