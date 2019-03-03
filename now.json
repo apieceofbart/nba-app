@@ -17,11 +17,11 @@
       "dest": "/src/backend/index.ts"
     },
     {
-      "src": "/*.js",
-      "dest": "/src/frontend/$1"
+      "src": "/main.bundle.js",
+      "dest": "/src/frontend/main.bundle.js"
     },
     {
-      "src": "/(.*)",
+      "src": "/",
       "dest": "/src/frontend/index.html"
     }
   ],
