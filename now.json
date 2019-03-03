@@ -2,8 +2,17 @@
   "version": 2,
   "name": "nba-app",
   "builds": [
-    { "src": "src/backend/index.ts", "use": "@now/node@canary" },
-    { "src": "src/frontend/index.html", "use": "@now/static" }
+    {
+      "src": "src/backend/index.ts",
+      "use": "@now/node@canary"
+    },
+    {
+      "src": "src/frontend/package.json",
+      "use": "@now/static-build",
+      "config": {
+        "distDir": "src/frontend/dist"
+      }
+    }
   ],
   "routes": [
     {
@@ -12,7 +21,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/src/frontend/index.html"
+      "dest": "/src/frontend/dist/index.html"
     }
   ],
   "alias": "nba-app.now.sh",
