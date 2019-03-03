@@ -17,6 +17,10 @@
       "dest": "/src/backend/index.ts"
     },
     {
+      "src": "/(.*).js",
+      "dest": "/src/frontend/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "/src/frontend/index.html"
     }
