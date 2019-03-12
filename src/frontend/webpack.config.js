@@ -1,30 +1,32 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports = function (env) {
+module.exports = function(env) {
   return {
     mode: env,
-    entry: './src/index.tsx',
+    entry: "./src/index.tsx",
     output: {
       path: `${__dirname}/dist`,
-      filename: 'main.bundle.js'
+      filename: "main.bundle.js"
     },
-    devtool: 'inline-source-map',
+    devtool: "inline-source-map",
     module: {
       rules: [
         {
           test: /\.tsx?$/,
           exclude: /node_modules/,
           use: {
-            loader: 'babel-loader'
+            loader: "babel-loader"
           }
         }
       ]
     },
-    plugins: [new HtmlWebpackPlugin({
-      template: 'index.html'
-    })],
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: "index.html"
+      })
+    ],
     resolve: {
-      extensions: ['.ts', '.tsx', '.js']
+      extensions: [".ts", ".tsx", ".js"]
     }
-  }
-}
+  };
+};
