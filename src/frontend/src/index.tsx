@@ -23,7 +23,7 @@ function App() {
 
   return (
     <section style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
-      <Typography variant="h1">NBA App</Typography>
+      <Typography variant="h4">NBA App</Typography>
       {loadingGames ? <CircularProgress /> : <GamesList games={games} />}
     </section>
   );

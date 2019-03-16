@@ -6,15 +6,19 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 export function GamesList({ games }: { games: GameDetails[] }) {
   return (
-    <List component="ul">
+    <List component="ul" style={{ width: "480px", maxWidth: "100%" }}>
       {games.map((game) => (
         <ListItem key={game.id}>
           <ListItemText
-            primary={game.home.nickname}
-            secondary={game.home.score}
+            secondary={`${game.home.city} ${game.home.nickname}`}
+            primary={game.home.score}
             style={{ textAlign: "right", flex: "1 1 50%" }}
           />
-          <ListItemText primary={game.visitor.nickname} secondary={game.visitor.score} style={{ flex: "1 1 50%" }} />
+          <ListItemText
+            secondary={`${game.visitor.city} ${game.visitor.nickname}`}
+            primary={game.visitor.score}
+            style={{ flex: "1 1 50%" }}
+          />
         </ListItem>
       ))}
     </List>
