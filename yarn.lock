@@ -155,6 +155,11 @@ diff@^3.1.0:
   resolved "https://artifactory.clr.awsdev.infor.com/artifactory/api/npm/lbs-poc/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
   integrity sha1-gAwN0eCov7yVg1wgKtIg/jF+WhI=
 
+dotenv@^7.0.0:
+  version "7.0.0"
+  resolved "https://artifactory.clr.awsdev.infor.com/artifactory/api/npm/lbs-poc/dotenv/-/dotenv-7.0.0.tgz#a2be3cd52736673206e8a85fb5210eea29628e7c"
+  integrity sha1-or481Sc2ZzIG6KhftSEO6ilijnw=
+
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://artifactory.clr.awsdev.infor.com/artifactory/api/npm/lbs-poc/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"

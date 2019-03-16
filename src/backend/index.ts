@@ -1,10 +1,11 @@
 import * as nodeFetch from "node-fetch";
 import * as express from "express";
 import { getTodaysDate } from "./utils";
+require("dotenv").config();
 
 const app: express.Application = express.default();
 
-const port = 3003;
+const port = process.env.API_PORT || 3003;
 
 const baseUrl = "http://data.nba.com/5s/json/cms/noseason/scoreboard";
 

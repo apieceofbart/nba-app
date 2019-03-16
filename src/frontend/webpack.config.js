@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+require("dotenv").config();
 
+const API_PORT = process.env.API_PORT || 3003;
 module.exports = function(env) {
   return {
     mode: env,
@@ -19,6 +21,11 @@ module.exports = function(env) {
           }
         }
       ]
+    },
+    devServer: {
+      proxy: {
+        "/api": `http://localhost:${API_PORT}`
+      }
     },
     plugins: [
       new HtmlWebpackPlugin({
