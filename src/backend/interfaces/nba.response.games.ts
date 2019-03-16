@@ -1,6 +1,6 @@
 /* created using example data and https://transform.now.sh/json-to-ts-interface/ */
-export type GamesResponse = GameDetails[];
-export interface GameDetails {
+export type GamesResponse = GameData[];
+export interface GameData {
   id: string;
   game_url: string;
   season_id: string;

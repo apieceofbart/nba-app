@@ -1,18 +1,18 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { GameDetails } from "../../backend/interfaces/nba.response.games";
+import { GameData } from "../../backend/interfaces/nba.response.games";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { Typography } from "@material-ui/core";
 import { GamesList } from "./GamesList";
 
 function App() {
-  const [games, setGames] = React.useState<GameDetails[]>([]);
+  const [games, setGames] = React.useState<GameData[]>([]);
   const [loadingGames, setLoadingGames] = React.useState(false);
 
   async function fetchGames() {
     setLoadingGames(true);
-    const gamesResponse: GameDetails[] = await fetch("/api/").then((r) => r.json());
+    const gamesResponse: GameData[] = await fetch("/api/").then((r) => r.json());
     setLoadingGames(false);
     setGames(gamesResponse);
   }

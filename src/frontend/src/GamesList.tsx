@@ -1,26 +1,32 @@
 import * as React from "react";
-import { GameDetails } from "../../backend/interfaces/nba.response.games";
+import { GameData } from "../../backend/interfaces/nba.response.games";
+import { unstable_useMediaQuery as useMediaQuery } from "@material-ui/core/useMediaQuery";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
+import { GameDetails } from "./GameDetails";
 
-export function GamesList({ games }: { games: GameDetails[] }) {
+import { Game } from "./Game";
+
+export function GamesList({ games }: { games: GameData[] }) {
+  const matches = useMediaQuery("(min-width:760px)");
+  const [selectedGameId, setSelectedGameId] = React.useState("");
+  function onGameSelect(id: string) {
+    setSelectedGameId(id);
+  }
+  const selectedGame = games.find((game) => game.id === selectedGameId);
   return (
-    <List component="ul" style={{ width: "480px", maxWidth: "100%" }}>
-      {games.map((game) => (
-        <ListItem key={game.id}>
-          <ListItemText
-            secondary={`${game.home.city} ${game.home.nickname}`}
-            primary={game.home.score}
-            style={{ textAlign: "right", flex: "1 1 50%" }}
+    <div style={{ display: "flex" }}>
+      <List component="ul" style={{ width: "480px", maxWidth: "100%" }}>
+        {games.map((game) => (
+          <Game
+            key={game.id}
+            game={game}
+            onGameSelect={onGameSelect}
+            selectedGameId={selectedGameId}
+            showDetails={!matches}
           />
-          <ListItemText
-            secondary={`${game.visitor.city} ${game.visitor.nickname}`}
-            primary={game.visitor.score}
-            style={{ flex: "1 1 50%" }}
-          />
-        </ListItem>
-      ))}
-    </List>
+        ))}
+      </List>
+      {matches && selectedGame ? <GameDetails home={selectedGame.home} visitor={selectedGame.visitor} /> : null}
+    </div>
   );
 }
