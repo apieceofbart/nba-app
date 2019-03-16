@@ -1,6 +1,6 @@
 import * as nodeFetch from "node-fetch";
 import * as express from "express";
-import { getTodaysDate } from "./utils";
+import { getYesterdaysDate } from "./utils";
 require("dotenv").config();
 
 const app: express.Application = express.default();
@@ -30,7 +30,7 @@ app.get("/api/:date?", async (req, res) => {
   try {
     let { date } = req.params;
     if (!date) {
-      date = getTodaysDate();
+      date = getYesterdaysDate();
     }
     const gamesOnDate = await getGamesFrom(date);
     res.send(gamesOnDate);
