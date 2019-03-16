@@ -14,8 +14,8 @@ type GameProps = {
 
 export function Game({ game, onGameSelect, showDetails = false, selectedGameId }: GameProps) {
   return (
-    <section style={{ display: "flex", flexDirection: "column" }}>
-      <ListItem key={game.id} onClick={() => onGameSelect(game.id)} button={true}>
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <ListItem component="div" key={game.id} onClick={() => onGameSelect(game.id)} button={true}>
         <ListItemText
           secondary={`${game.home.city} ${game.home.nickname}`}
           primary={game.home.score}
@@ -30,6 +30,6 @@ export function Game({ game, onGameSelect, showDetails = false, selectedGameId }
       <Collapse in={showDetails && selectedGameId === game.id}>
         <GameDetails home={game.home} visitor={game.visitor} />
       </Collapse>
-    </section>
+    </div>
   );
 }
