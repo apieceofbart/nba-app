@@ -1,5 +1,38 @@
 /* created using example data and https://transform.now.sh/json-to-ts-interface/ */
-export type GamesResponse = GameData[];
+export interface GamesResponse {
+  sports_content: Sports_content;
+}
+interface Sports_content {
+  sports_meta: Sports_meta;
+  games: GamesData;
+}
+interface Sports_meta {
+  date_time: string;
+  season_meta: Season_meta;
+  next: Next;
+}
+interface Season_meta {
+  calendar_date: string;
+  season_year: string;
+  stats_season_year: string;
+  stats_season_id: string;
+  stats_season_stage: string;
+  roster_season_year: string;
+  schedule_season_year: string;
+  standings_season_year: string;
+  season_id: string;
+  display_year: string;
+  display_season: string;
+  season_stage: string;
+  league_id: string;
+}
+interface Next {
+  url: string;
+}
+
+type GamesData = {
+  game: GameData[];
+};
 export interface GameData {
   id: string;
   game_url: string;
