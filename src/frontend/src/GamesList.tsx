@@ -6,19 +6,18 @@ import List from "@material-ui/core/List";
 import { GameDetails } from "./GameDetails";
 
 import { Game } from "./Game";
-import { CircularProgress } from "@material-ui/core";
 
 export function GamesList({ games }: { games: GameData[] }) {
   const matches = useMediaQuery("(min-width:760px)");
   const [selectedGameId, setSelectedGameId] = React.useState("");
   const [loadingGameDetails, setLoadingGameDetails] = React.useState(false);
-  const [selectedGame, setSelectedGame] = React.useState<BoxScore | null>(null);
+  const [selectedGameDetails, setSelectedGameDetails] = React.useState<BoxScore | undefined>(undefined);
 
   async function fetchGamesDetails(selectedGameId: string) {
     setLoadingGameDetails(true);
     const boxScore: BoxScore = await fetch(`/api/game/${selectedGameId}`).then((r) => r.json());
     setLoadingGameDetails(false);
-    setSelectedGame(boxScore);
+    setSelectedGameDetails(boxScore);
   }
 
   React.useEffect(() => {
@@ -33,14 +32,8 @@ export function GamesList({ games }: { games: GameData[] }) {
     setSelectedGameId(id);
   }
   function showDetails() {
-    if (matches) {
-      if (loadingGameDetails) {
-        return <CircularProgress />;
-      }
-      if (selectedGame) {
-        return <GameDetails home={selectedGame.home} visitor={selectedGame.visitor} />;
-      }
-      return null;
+    if (selectedGameDetails) {
+      return <GameDetails loading={loadingGameDetails} gameDetails={selectedGameDetails} />;
     }
     return null;
   }
@@ -52,13 +45,13 @@ export function GamesList({ games }: { games: GameData[] }) {
           <Game
             key={game.id}
             game={game}
+            gameDetails={!matches && showDetails()}
             onGameSelect={onGameSelect}
-            selectedGameId={selectedGameId}
-            showDetails={!matches}
+            selected={selectedGameId === game.id}
           />
         ))}
       </List>
-      {showDetails()}
+      {matches && showDetails()}
     </div>
   );
 }

@@ -3,16 +3,15 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import * as React from "react";
 import { GameData } from "../../backend/interfaces/nba.response.games";
-import { GameDetails } from "./GameDetails";
 
 type GameProps = {
   game: GameData;
   onGameSelect: (id: string) => void;
-  showDetails: boolean;
-  selectedGameId: string;
+  selected: boolean;
+  gameDetails: React.ReactElement | null | false;
 };
 
-export function Game({ game, onGameSelect, showDetails = false, selectedGameId }: GameProps) {
+export function Game({ game, onGameSelect, selected = false, gameDetails }: GameProps) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <ListItem component="div" key={game.id} onClick={() => onGameSelect(game.id)} button={true}>
@@ -27,9 +26,7 @@ export function Game({ game, onGameSelect, showDetails = false, selectedGameId }
           style={{ flex: "1 1 50%" }}
         />
       </ListItem>
-      <Collapse in={showDetails && selectedGameId === game.id}>
-        <GameDetails home={game.home} visitor={game.visitor} />
-      </Collapse>
+      {selected && <Collapse in={selected}>{gameDetails}</Collapse>}
     </div>
   );
 }
