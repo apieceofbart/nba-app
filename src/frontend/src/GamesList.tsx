@@ -8,7 +8,7 @@ import { GameDetails } from "./GameDetails";
 import { Game } from "./Game";
 
 export function GamesList({ games }: { games: GameData[] }) {
-  const matches = useMediaQuery("(min-width:760px)");
+  const matches = useMediaQuery("(min-width:1100px)");
   const [selectedGameId, setSelectedGameId] = React.useState("");
   const [loadingGameDetails, setLoadingGameDetails] = React.useState(false);
   const [selectedGameDetails, setSelectedGameDetails] = React.useState<BoxScore | undefined>(undefined);

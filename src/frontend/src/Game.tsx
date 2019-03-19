@@ -14,7 +14,7 @@ type GameProps = {
 export function Game({ game, onGameSelect, selected = false, gameDetails }: GameProps) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <ListItem component="div" key={game.id} onClick={() => onGameSelect(game.id)} button={true}>
+      <ListItem component="div" key={game.id} onClick={() => onGameSelect(game.id)} button={true} selected={selected}>
         <ListItemText
           secondary={`${game.home.city} ${game.home.nickname}`}
           primary={game.home.score}
