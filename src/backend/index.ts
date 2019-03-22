@@ -58,7 +58,7 @@ app.get("/api/:date?", async (req, res) => {
 app.get("/api/game/:gameId?/:date?", async (req, res) => {
   try {
     let { gameId, date } = req.params;
-    console.log(gameId, date);
+
     if (!date) {
       date = getYesterdaysDate();
     }

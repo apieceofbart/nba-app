@@ -11,6 +11,10 @@ import { PointsTable } from "./PointsTable";
 export function GameDetails({ gameDetails, loading }: { gameDetails: BoxScore; loading: boolean }) {
   const [team, setTeam] = React.useState<"home" | "visitor">("home");
   const { home, visitor } = gameDetails;
+  React.useEffect(() => {
+    // reset tabs on game change
+    setTeam("home");
+  }, [gameDetails.id]);
 
   return (
     <div
