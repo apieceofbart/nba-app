@@ -25,7 +25,7 @@ export function GameDetails({ gameDetails, loading }: { gameDetails: BoxScore; l
             <Tab value="home" label={home.nickname} />
             <Tab value="visitor" label={visitor.nickname} />
           </Tabs>
-          <PointsTable players={gameDetails[team].players!} />
+          <PointsTable data={gameDetails[team]!} />
         </>
       )}
     </div>

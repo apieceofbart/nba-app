@@ -138,7 +138,7 @@ interface Rebounds {
   StatValue: string;
   leader: LeaderItem[];
 }
-interface Stats {
+export interface Stats {
   points: string;
   field_goals_made: string;
   field_goals_attempted: string;
