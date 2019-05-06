@@ -67,7 +67,7 @@ export function PointsTable({ data }: { data: BoxScore["home"] }) {
             <TableCell key="drebounds">{data.stats!.rebounds_defensive}</TableCell>
             <TableCell key="orebounds">{data.stats!.rebounds_offensive}</TableCell>
             <TableCell key="field_goals">
-              {data.stats!.field_goals_made} / {data.stats!.field_goals_attempted}({data.stats!.field_goals_percentage}
+              {data.stats!.field_goals_made} / {data.stats!.field_goals_attempted} ({data.stats!.field_goals_percentage}
               %)
             </TableCell>
             <TableCell key="threes">
