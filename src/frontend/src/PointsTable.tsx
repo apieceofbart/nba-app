@@ -26,6 +26,7 @@ export function PointsTable({ data }: { data: BoxScore["home"] }) {
             <TableCell key="steals">Steals</TableCell>
             <TableCell key="drebounds">D. Rebounds</TableCell>
             <TableCell key="orebounds">O. Rebounds</TableCell>
+            <TableCell key="filed_goals">Field Goals</TableCell>
             <TableCell key="threes">Three Points</TableCell>
             <TableCell key="blocks">Blocks</TableCell>
             <TableCell key="plusminus">+ / -</TableCell>
@@ -45,6 +46,9 @@ export function PointsTable({ data }: { data: BoxScore["home"] }) {
                 <TableCell key="steals">{p.steals}</TableCell>
                 <TableCell key="drebounds">{p.rebounds_defensive}</TableCell>
                 <TableCell key="orebounds">{p.rebounds_offensive}</TableCell>
+                <TableCell key="field_goals">
+                  {p.field_goals_made} / {p.field_goals_attempted}
+                </TableCell>
                 <TableCell key="threes">
                   {p.three_pointers_made} / {p.three_pointers_attempted}
                 </TableCell>
@@ -62,8 +66,12 @@ export function PointsTable({ data }: { data: BoxScore["home"] }) {
             <TableCell key="steals">{data.stats!.steals}</TableCell>
             <TableCell key="drebounds">{data.stats!.rebounds_defensive}</TableCell>
             <TableCell key="orebounds">{data.stats!.rebounds_offensive}</TableCell>
+            <TableCell key="field_goals">
+              {data.stats!.field_goals_made} / {data.stats!.field_goals_attempted} {data.stats!.field_goals_percentage}
+            </TableCell>
             <TableCell key="threes">
-              {data.stats!.three_pointers_made} / {data.stats!.three_pointers_attempted}
+              {data.stats!.three_pointers_made} / {data.stats!.three_pointers_attempted}{" "}
+              {data.stats!.three_pointers_percentage}
             </TableCell>
             <TableCell key="blocks">{data.stats!.blocks}</TableCell>
           </TableRow>

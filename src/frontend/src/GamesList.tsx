@@ -25,12 +25,14 @@ export function GamesList({ games }: { games: GameData[] }) {
       fetchGamesDetails(selectedGameId);
     }
   }, [selectedGameId]);
+
   function onGameSelect(id: string) {
     if (id === selectedGameId) {
       return setSelectedGameId("");
     }
     setSelectedGameId(id);
   }
+
   function showDetails() {
     if (selectedGameDetails) {
       return <GameDetails loading={loadingGameDetails} gameDetails={selectedGameDetails} />;
